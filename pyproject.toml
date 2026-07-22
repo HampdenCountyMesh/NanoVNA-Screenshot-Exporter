@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nanovna-screenshot-exporter"
+version = "0.1.0"
+description = "A small desktop utility for exporting screenshots saved on supported NanoVNA devices."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Hampden County Mesh contributors"}]
+dependencies = ["pyserial>=3.5,<4"]
+keywords = ["NanoVNA", "ham-radio", "VNA", "screenshots"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Communications :: Ham Radio",
+]
+
+[project.gui-scripts]
+nanovna-screenshot-exporter = "nanovna_exporter.gui:main"
+
+[tool.setuptools.packages.find]
+include = ["nanovna_exporter*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
