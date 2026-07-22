@@ -1,6 +1,16 @@
 # NanoVNA Screenshot Exporter
 
-A deliberately small desktop utility that exports screenshots already saved on a supported NanoVNA. The normal workflow is:
+A deliberately small desktop utility that exports screenshots already saved on a supported NanoVNA.
+
+> **Release status:** `v0.1.0` is an alpha release. The core export workflow is working, but NanoVNA firmware and clone compatibility varies.
+
+## Download
+
+Download the latest Windows release from the repository's [Releases page](https://github.com/HampdenCountyMesh/NanoVNA-Screenshot-Exporter/releases/latest). Extract the downloaded ZIP and run `NanoVNA-Screenshot-Exporter.exe`. Python is not required for the release build.
+
+Windows may display a SmartScreen warning because the executable is not code-signed.
+
+## Use
 
 1. Connect the NanoVNA by USB and turn it on.
 2. Open the app.
@@ -12,6 +22,10 @@ The app never deletes screenshots from the NanoVNA. Existing identical files are
 
 ## Current compatibility
 
+### Confirmed hardware
+
+Successfully tested with an AURSINC NanoVNA-H4 V4.4. The app detected the device over USB serial, exported 12 saved screenshots, and correctly skipped all 12 when the export was repeated.
+
 ### Supported over USB serial
 
 Firmware must provide all of the following shell commands:
@@ -20,7 +34,7 @@ Firmware must provide all of the following shell commands:
 - `sd_list`
 - `sd_read`
 
-These commands are present in current NanoVNA-H/H4 firmware trees derived from the DiSlord/Hugen code when SD-card command support is enabled. This is the intended path for the AURSINC NanoVNA-H4 V4.4 and similar H/H4 units.
+These commands are present in current NanoVNA-H/H4 firmware trees derived from the DiSlord/Hugen code when SD-card command support is enabled. Similar H/H4 units using compatible firmware should work, but have not all been physically tested.
 
 Saved image formats currently recognized: BMP, TIFF, PNG, and JPEG.
 
@@ -67,7 +81,7 @@ The executable will be written to:
 dist\NanoVNA-Screenshot-Exporter.exe
 ```
 
-The included GitHub Actions workflow can also build the executable. Run **Build Windows executable** from the repository's Actions tab or push a tag such as `v0.1.0`, then download the build artifact.
+The included GitHub Actions workflow can also run the tests and build the executable from the repository's **Actions** tab.
 
 ## Linux and macOS
 
